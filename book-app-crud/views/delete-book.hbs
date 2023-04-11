@@ -1,0 +1,25 @@
+<input placeholder="Enter book id to delete" id="input-id"><br>
+<input type="submit" value="Delete" onclick="deleteBook()">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+   
+
+    function deleteBook(){
+         var bookId = document.querySelector('#input-id').value;
+         console.log(bookId)
+       fetch(`/books/delete/${bookId}`, {
+        method: 'DELETE'
+        })
+        .then(response => {
+            if (response.ok) {
+            console.log('Book deleted successfully');
+            } else {
+            console.error('Failed to delete book');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+</script>
+
